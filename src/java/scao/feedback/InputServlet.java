@@ -12,16 +12,16 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "InputServlet", urlPatterns = {"/feedback/", "/feedback/new"})
 public class InputServlet extends HttpServlet {
-    
+
     @EJB
     private InputFacade inputFacade;
     @EJB
     private FeedbackTypeFacade typeFacade;
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            String path = request.getServletPath();
+        String path = request.getServletPath();
         String view = path;
 
         // if report page is requested
@@ -29,14 +29,14 @@ public class InputServlet extends HttpServlet {
             // store inputs list in servlet context
             getServletContext().setAttribute("inputs", inputFacade.findAll());
             view = "/report";
-        
+
         } else if (path.equals("/feedback/new")) {
             // store feedback types list in servlet context
             getServletContext().setAttribute("types", typeFacade.findAll());
-            System.out.println("loaded types:" + typeFacade.findAll().size()); 
+            System.out.println("loaded types:" + typeFacade.findAll().size());
             view = "/new";
         }
-        
+
         // use RequestDispatcher to forward request internally
         String url = "/WEB-INF/view" + view + ".jsp";
 
@@ -50,7 +50,7 @@ public class InputServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                String path = request.getServletPath();
+        String path = request.getServletPath();
 
         // if create action is requested
         if (path.equals("/feedback/")) {
@@ -63,6 +63,6 @@ public class InputServlet extends HttpServlet {
             feedback.setTypeId(type);
             inputFacade.create(feedback);
             response.sendRedirect(request.getContextPath() + "/thanks.jsp");
-    }
+        }
     }
 }
