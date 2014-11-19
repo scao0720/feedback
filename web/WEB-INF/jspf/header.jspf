@@ -6,7 +6,7 @@
 <%  boolean isAuthenticated = false;
     for (Cookie cookie
             : ((HttpServletRequest) pageContext.getRequest()).getCookies()) {
-        if (cookie.getName().equals("user_email")) {
+        if (cookie.getName().equals("username")) {
             isAuthenticated = true;
             break;
         }
@@ -41,7 +41,7 @@
                     <li class="active"><a href="http://localhost:8080/ahd-tracker/">AHD Tracker <span class="sr-only">(current)</span></a></li>
                     <li><a href="http://localhost:8080/startstop/">StartStop</a></li>
                 </ul>
-                <form action="signout.jsp" method="post" class="navbar-form navbar-right">
+                <form action="/ccfinal/signout.jsp" method="post" class="navbar-form navbar-right">
                     <ul class="nav navbar-nav navbar-right">
                         <li><button type="submit" class="btn btn-default">Sign out</button></li>
                     </ul>
