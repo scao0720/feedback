@@ -3,6 +3,8 @@
     Created on : Oct 28, 2014, 12:26:20 PM
     Author     : Sabina
 --%>
+<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/superhero/bootstrap.min.css" rel="stylesheet">
+<div class="container">
 <h2>Feedback form</h2>
 <form action="${pageContext.request.contextPath}/feedback/" method="post">
     <p>Name: <input type="text" name="name" value="" /></p>
@@ -41,3 +43,4 @@
     <p> <textarea name="other" rows="4"></textarea></p>
     <input type="submit" value="Submit" />
 </form>
+</div>
